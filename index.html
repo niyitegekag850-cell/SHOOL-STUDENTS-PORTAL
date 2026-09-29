@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduPulse - Professional School Management System</title>
+    <title>EduPulse - Complete School Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Modern Color Palette & Design Tokens */
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
@@ -20,7 +23,7 @@
             --border: #e2e8f0;
             --text-dark: #0f172a;
             --text-muted: #64748b;
-            --sidebar-width: 260px;
+            --sidebar-width: 250px;
             --sidebar-collapsed-width: 70px;
             --header-height: 64px;
             --radius-sm: 6px;
@@ -48,7 +51,6 @@
             overflow-x: hidden;
         }
 
-        /* SVG Icon Sizing */
         .icon {
             width: 20px;
             height: 20px;
@@ -61,7 +63,6 @@
             vertical-align: middle;
         }
 
-        /* Login Screen Layout */
         #login-screen {
             display: flex;
             min-height: 100vh;
@@ -76,13 +77,9 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             width: 100%;
-            max-width: 440px;
+            max-width: 460px;
             padding: 40px;
             text-align: center;
-        }
-
-        .login-header {
-            margin-bottom: 28px;
         }
 
         .login-logo {
@@ -90,7 +87,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .login-logo svg {
@@ -100,7 +97,7 @@
         }
 
         .login-title {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--text-dark);
         }
@@ -108,24 +105,38 @@
         .login-subtitle {
             font-size: 14px;
             color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        .security-notice {
-            background-color: #fffbebf8;
-            border: 1px solid #fef3c7;
-            color: #92400e;
-            padding: 10px 14px;
-            border-radius: var(--radius-md);
-            font-size: 12px;
             margin-bottom: 20px;
-            text-align: left;
-            line-height: 1.4;
         }
 
-        /* Form Controls */
+        .quick-roles {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .badge-btn {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .badge-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* Forms & Buttons */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             text-align: left;
         }
 
@@ -194,14 +205,12 @@
         .btn-block { width: 100%; }
         .btn-sm { padding: 6px 12px; font-size: 12px; }
 
-        /* App Layout */
         #app-screen {
             display: flex;
             height: 100vh;
             overflow: hidden;
         }
 
-        /* Sidebar Styling */
         .sidebar {
             width: var(--sidebar-width);
             background-color: #0f172a;
@@ -273,7 +282,6 @@
             color: var(--primary);
         }
 
-        /* Main Content Layout */
         .main-wrapper {
             flex: 1;
             display: flex;
@@ -281,7 +289,6 @@
             overflow: hidden;
         }
 
-        /* Top Header Navigation */
         .navbar {
             height: var(--header-height);
             background: var(--bg-card);
@@ -397,7 +404,6 @@
             text-transform: capitalize;
         }
 
-        /* Dashboard Content Container */
         .content-container {
             flex: 1;
             overflow-y: auto;
@@ -409,6 +415,8 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .page-title {
@@ -417,7 +425,6 @@
             color: var(--text-dark);
         }
 
-        /* Stats Cards Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -458,7 +465,6 @@
             margin-top: 2px;
         }
 
-        /* Charts & Dashboard Section */
         .dashboard-charts {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -487,12 +493,39 @@
             color: var(--text-dark);
         }
 
-        canvas {
-            width: 100% !important;
-            max-height: 240px;
+        /* Pure CSS Dynamic Visual Charts */
+        .bar-chart-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            height: 180px;
+            padding-top: 20px;
+            border-bottom: 1px solid var(--border);
         }
 
-        /* Modern Tables */
+        .bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-end;
+        }
+
+        .bar-fill {
+            width: 100%;
+            max-width: 36px;
+            background: var(--primary);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s ease;
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -564,8 +597,8 @@
         .modal {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 600px;
+            width: 90%;
+            max-width: 650px;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: var(--shadow-lg);
@@ -602,18 +635,49 @@
             padding: 24px;
         }
 
-        .modal-footer {
-            padding: 16px 24px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-        }
-
         .form-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
+        }
+
+        /* Notifications Dropdown */
+        .notif-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            width: 320px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            display: none;
+            z-index: 50;
+        }
+
+        .notif-dropdown.active {
+            display: block;
+        }
+
+        .notif-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notif-list {
+            max-height: 280px;
+            overflow-y: auto;
+            list-style: none;
+        }
+
+        .notif-item {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
         }
 
         /* Toast Notifications */
@@ -645,9 +709,9 @@
             to { transform: translateX(0); }
         }
 
-        /* Print CSS Override */
+        /* Printable Area Styles */
         @media print {
-            .sidebar, .navbar, .btn, .modal-backdrop, .no-print {
+            .sidebar, .navbar, .btn, .modal-backdrop, .no-print, .page-header button {
                 display: none !important;
             }
             body, #app-screen, .main-wrapper, .content-container {
@@ -661,13 +725,13 @@
                 border: none !important;
                 box-shadow: none !important;
             }
-            .printable-area {
-                display: block !important;
-                width: 100%;
+            .printable-card {
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 20px !important;
             }
         }
 
-        /* Responsive Design Rules */
         @media (max-width: 768px) {
             .sidebar {
                 position: fixed;
@@ -688,19 +752,20 @@
 </head>
 <body>
 
-    <!-- LOGIN SCREEN -->
     <div id="login-screen">
         <div class="login-card">
-            <div class="login-header">
-                <div class="login-logo">
-                    <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-                    <span class="login-title">EduPulse</span>
-                </div>
-                <p class="login-subtitle">School Management System</p>
+            <div class="login-logo">
+                <svg viewBox="0 0 24 24" class="icon"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                <span class="login-title">EduPulse</span>
             </div>
+            <p class="login-subtitle">Comprehensive School Management System</p>
 
-            <div class="security-notice">
-                <strong>Notice:</strong> Local Storage authentication is designed for local demonstration/use only and is not secure for public production environments.
+            <div style="margin-bottom: 12px; font-size: 12px; color: var(--text-muted);">Quick Role Select (Auto Fill):</div>
+            <div class="quick-roles">
+                <button type="button" class="badge-btn" onclick="fillCredentials('admin', 'admin123')">Admin</button>
+                <button type="button" class="badge-btn" onclick="fillCredentials('teacher', 'teacher123')">Teacher</button>
+                <button type="button" class="badge-btn" onclick="fillCredentials('accountant', 'accountant123')">Accountant</button>
+                <button type="button" class="badge-btn" onclick="fillCredentials('student', 'student123')">Student</button>
             </div>
 
             <form id="login-form">
@@ -717,21 +782,16 @@
                         </button>
                     </div>
                 </div>
-                <div id="login-error" style="color: var(--danger); font-size: 13px; margin-bottom: 12px; display: none;">Invalid username or password</div>
+                <div id="login-error" style="color: var(--danger); font-size: 13px; margin-bottom: 12px; display: none;">Invalid username or password. Please try again.</div>
                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </form>
-            <div style="margin-top: 15px; font-size: 12px; color: var(--text-muted);">
-                Default credentials: <strong>admin</strong> / <strong>admin123</strong>
-            </div>
         </div>
     </div>
 
-    <!-- MAIN APP SCREEN -->
     <div id="app-screen" style="display: none;">
-        <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-brand">
-                <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                <svg viewBox="0 0 24 24" class="icon"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
                 <span id="brand-name">EduPulse</span>
             </div>
             <ul class="sidebar-menu">
@@ -741,7 +801,7 @@
                 <li class="menu-item"><a class="menu-link" data-view="classes"><svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Classes</span></a></li>
                 <li class="menu-item"><a class="menu-link" data-view="subjects"><svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Subjects</span></a></li>
                 <li class="menu-item"><a class="menu-link" data-view="attendance"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Attendance</span></a></li>
-                <li class="menu-item"><a class="menu-link" data-view="exams"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Examinations</span></a></li>
+                <li class="menu-item"><a class="menu-link" data-view="exams"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Exams & Marks</span></a></li>
                 <li class="menu-item"><a class="menu-link" data-view="fees"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Fees & Finance</span></a></li>
                 <li class="menu-item"><a class="menu-link" data-view="users"><svg class="icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg><span>User Mgmt</span></a></li>
                 <li class="menu-item"><a class="menu-link" data-view="reports"><svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Reports</span></a></li>
@@ -750,7 +810,6 @@
         </aside>
 
         <div class="main-wrapper">
-            <!-- TOP NAVBAR -->
             <header class="navbar">
                 <div class="navbar-left">
                     <button class="sidebar-toggle" id="sidebar-toggle">
@@ -758,14 +817,24 @@
                     </button>
                     <div class="search-box">
                         <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        <input type="text" class="form-control" id="global-search" placeholder="Search modules...">
+                        <input type="text" class="form-control" id="global-search" placeholder="Quick search..." onkeyup="handleGlobalSearch(event)">
                     </div>
                 </div>
                 <div class="navbar-right">
-                    <button class="nav-icon-btn" id="notif-btn" onclick="toggleNotifications()">
-                        <svg class="icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                        <span class="badge" id="notif-badge" style="display: none;">0</span>
-                    </button>
+                    <div style="position: relative;">
+                        <button class="nav-icon-btn" id="notif-btn" onclick="toggleNotifDropdown()">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            <span class="badge" id="notif-badge" style="display: none;">0</span>
+                        </button>
+                        <div class="notif-dropdown" id="notif-dropdown">
+                            <div class="notif-header">
+                                <span>Notifications</span>
+                                <button class="btn btn-secondary btn-sm" onclick="clearNotifications()">Clear All</button>
+                            </div>
+                            <ul class="notif-list" id="notif-list"></ul>
+                        </div>
+                    </div>
+
                     <div class="user-profile" onclick="logout()">
                         <div class="user-avatar" id="header-avatar">A</div>
                         <div class="user-info">
@@ -776,14 +845,11 @@
                 </div>
             </header>
 
-            <!-- MAIN CONTENT AREA -->
-            <main class="content-container" id="content-container">
-                <!-- Views loaded dynamically -->
-            </main>
+            <main class="content-container" id="content-container"></main>
         </div>
     </div>
 
-    <!-- MODAL CONTAINER -->
+    <!-- Modal Backdrop -->
     <div class="modal-backdrop" id="modal-backdrop">
         <div class="modal" id="modal">
             <div class="modal-header">
@@ -794,11 +860,9 @@
         </div>
     </div>
 
-    <!-- TOAST CONTAINER -->
     <div class="toast-container" id="toast-container"></div>
 
     <script>
-        /* CORE APPLICATION STATE & LOCAL STORAGE INITIALIZATION */
         const DB_KEYS = {
             USERS: 'sms_users',
             STUDENTS: 'sms_students',
@@ -807,15 +871,13 @@
             SUBJECTS: 'sms_subjects',
             ATTENDANCE: 'sms_attendance',
             EXAMS: 'sms_exams',
-            RESULTS: 'sms_results',
-            FEES: 'sms_fees',
+            MARKS: 'sms_marks',
             PAYMENTS: 'sms_payments',
             NOTIFS: 'sms_notifications',
             SETTINGS: 'sms_settings',
             CURRENT_USER: 'sms_current_user'
         };
 
-        // Reusable LocalStorage helper
         const DB = {
             get: (key) => JSON.parse(localStorage.getItem(key)) || [],
             set: (key, data) => localStorage.setItem(key, JSON.stringify(data)),
@@ -823,7 +885,11 @@
             generateId: () => '_' + Math.random().toString(36).substr(2, 9)
         };
 
-        // Initialize Sample Data
+        function fillCredentials(u, p) {
+            document.getElementById('login-username').value = u;
+            document.getElementById('login-password').value = p;
+        }
+
         function initSampleData() {
             if (!localStorage.getItem(DB_KEYS.SETTINGS)) {
                 DB.set(DB_KEYS.SETTINGS, {
@@ -846,10 +912,10 @@
 
             if (!localStorage.getItem(DB_KEYS.USERS)) {
                 DB.set(DB_KEYS.USERS, [
-                    { id: "u1", username: "admin", password: "123", name: "System Admin", role: "admin", status: "active" },
-                    { id: "u2", username: "teacher", password: "123", name: "Sarah Jenkins", role: "teacher", status: "active" },
-                    { id: "u3", username: "accountant", password: "123", name: "Mark Miller", role: "accountant", status: "active" },
-                    { id: "u4", username: "student", password: "123", name: "John Doe", role: "student", status: "active" }
+                    { id: "u1", username: "admin", password: "admin123", name: "System Admin", role: "admin", status: "active" },
+                    { id: "u2", username: "teacher", password: "teacher123", name: "Sarah Jenkins", role: "teacher", status: "active" },
+                    { id: "u3", username: "accountant", password: "accountant123", name: "Mark Miller", role: "accountant", status: "active" },
+                    { id: "u4", username: "student", password: "student123", name: "John Doe", role: "student", status: "active" }
                 ]);
             }
 
@@ -864,23 +930,23 @@
             if (!localStorage.getItem(DB_KEYS.SUBJECTS)) {
                 DB.set(DB_KEYS.SUBJECTS, [
                     { id: "s1", name: "Mathematics", code: "MATH10", class: "Grade 10", teacher: "Sarah Jenkins" },
-                    { id: "s2", name: "English Science", code: "ENG10", class: "Grade 10", teacher: "Robert Davis" },
+                    { id: "s2", name: "Science", code: "SCI10", class: "Grade 10", teacher: "Robert Davis" },
                     { id: "s3", name: "Physics", code: "PHY11", class: "Grade 11", teacher: "Emily Stone" }
                 ]);
             }
 
             if (!localStorage.getItem(DB_KEYS.STUDENTS)) {
                 DB.set(DB_KEYS.STUDENTS, [
-                    { id: "st1", admNo: "ADM001", name: "John Doe", gender: "Male", dob: "2008-05-14", class: "Grade 10", parent: "Michael Doe", phone: "555-0101", email: "john@example.com", status: "active" },
-                    { id: "st2", admNo: "ADM002", name: "Jane Smith", gender: "Female", dob: "2008-08-22", class: "Grade 10", parent: "David Smith", phone: "555-0102", email: "jane@example.com", status: "active" },
-                    { id: "st3", admNo: "ADM003", name: "Alice Johnson", gender: "Female", dob: "2007-03-10", class: "Grade 11", parent: "Chris Johnson", phone: "555-0103", email: "alice@example.com", status: "active" }
+                    { id: "st1", admNo: "ADM1001", name: "John Doe", gender: "Male", dob: "2008-05-14", class: "Grade 10", parent: "Michael Doe", phone: "555-0101", email: "john@example.com", status: "active" },
+                    { id: "st2", admNo: "ADM1002", name: "Jane Smith", gender: "Female", dob: "2008-08-22", class: "Grade 10", parent: "David Smith", phone: "555-0102", email: "jane@example.com", status: "active" },
+                    { id: "st3", admNo: "ADM1003", name: "Alice Johnson", gender: "Female", dob: "2007-03-10", class: "Grade 11", parent: "Chris Johnson", phone: "555-0103", email: "alice@example.com", status: "active" }
                 ]);
             }
 
             if (!localStorage.getItem(DB_KEYS.TEACHERS)) {
                 DB.set(DB_KEYS.TEACHERS, [
                     { id: "t1", name: "Sarah Jenkins", gender: "Female", phone: "555-0201", email: "sarah@edupulse.edu", subject: "Mathematics", qualification: "M.Sc Mathematics", salary: 4500, status: "active" },
-                    { id: "t2", name: "Robert Davis", gender: "Male", phone: "555-0202", email: "robert@edupulse.edu", subject: "English Science", qualification: "B.Ed English", salary: 4000, status: "active" }
+                    { id: "t2", name: "Robert Davis", gender: "Male", phone: "555-0202", email: "robert@edupulse.edu", subject: "Science", qualification: "B.Ed Science", salary: 4000, status: "active" }
                 ]);
             }
 
@@ -891,32 +957,46 @@
                 ]);
             }
 
+            if (!localStorage.getItem(DB_KEYS.EXAMS)) {
+                DB.set(DB_KEYS.EXAMS, [
+                    { id: "e1", name: "Mid-Term Exam", class: "Grade 10", subject: "Mathematics", term: "Term 1", date: "2026-02-10" }
+                ]);
+            }
+
+            if (!localStorage.getItem(DB_KEYS.MARKS)) {
+                DB.set(DB_KEYS.MARKS, [
+                    { id: "m1", examId: "e1", studentId: "st1", score: 85, grade: "A" },
+                    { id: "m2", examId: "e1", studentId: "st2", score: 72, grade: "B" }
+                ]);
+            }
+
             if (!localStorage.getItem(DB_KEYS.NOTIFS)) {
                 DB.set(DB_KEYS.NOTIFS, [
-                    { id: "n1", message: "System initialized with sample data.", date: new Date().toLocaleDateString(), read: false }
+                    { id: "n1", message: "System setup completed with sample records.", date: new Date().toLocaleTimeString(), read: false }
                 ]);
             }
         }
 
-        /* AUTHENTICATION & NAV LOGIC */
         let currentUser = null;
 
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const u = document.getElementById('login-username').value;
-            const p = document.getElementById('login-password').value;
+            const u = document.getElementById('login-username').value.trim();
+            const p = document.getElementById('login-password').value.trim();
             const users = DB.get(DB_KEYS.USERS);
-            const user = users.find(x => x.username === u && x.password === p);
+            
+            const user = users.find(x => x.username.toLowerCase() === u.toLowerCase() && x.password === p);
 
             if (user) {
                 if (user.status !== 'active') {
-                    showToast("Account deactivated. Contact Admin.");
+                    showToast("Account is deactivated. Contact Admin.");
                     return;
                 }
                 currentUser = user;
                 DB.set(DB_KEYS.CURRENT_USER, user);
                 document.getElementById('login-error').style.display = 'none';
                 loadAppScreen();
+                showToast(`Welcome back, ${user.name}!`);
             } else {
                 document.getElementById('login-error').style.display = 'block';
             }
@@ -927,20 +1007,19 @@
             localStorage.removeItem(DB_KEYS.CURRENT_USER);
             document.getElementById('app-screen').style.display = 'none';
             document.getElementById('login-screen').style.display = 'flex';
+            showToast("Signed out successfully.");
         }
 
         function loadAppScreen() {
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('app-screen').style.display = 'flex';
             
-            // Update Header User Profile
             document.getElementById('header-user-name').innerText = currentUser.name;
             document.getElementById('header-user-role').innerText = currentUser.role;
             document.getElementById('header-avatar').innerText = currentUser.name.charAt(0).toUpperCase();
 
-            // Dynamic RBAC Sidebar Hiding
             applyRBAC();
-            updateNotifBadge();
+            updateNotifUI();
             navigate('dashboard');
         }
 
@@ -949,14 +1028,13 @@
             const links = document.querySelectorAll('.menu-link');
             links.forEach(link => {
                 const view = link.getAttribute('data-view');
-                if (role === 'teacher' && ['fees', 'users'].includes(view)) link.parentElement.style.display = 'none';
-                else if (role === 'accountant' && ['exams', 'teachers', 'attendance'].includes(view)) link.parentElement.style.display = 'none';
-                else if (role === 'student' && ['teachers', 'users', 'settings'].includes(view)) link.parentElement.style.display = 'none';
+                if (role === 'teacher' && ['fees', 'users', 'settings'].includes(view)) link.parentElement.style.display = 'none';
+                else if (role === 'accountant' && ['exams', 'teachers', 'attendance', 'subjects', 'classes'].includes(view)) link.parentElement.style.display = 'none';
+                else if (role === 'student' && ['teachers', 'users', 'settings', 'fees'].includes(view)) link.parentElement.style.display = 'none';
                 else link.parentElement.style.display = 'block';
             });
         }
 
-        /* NAVIGATION ROUTER */
         document.querySelectorAll('.menu-link').forEach(link => {
             link.addEventListener('click', function() {
                 document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
@@ -986,7 +1064,6 @@
             }
         }
 
-        /* VIEW 1: DASHBOARD */
         function renderDashboard(container) {
             const students = DB.get(DB_KEYS.STUDENTS);
             const teachers = DB.get(DB_KEYS.TEACHERS);
@@ -994,12 +1071,13 @@
             const payments = DB.get(DB_KEYS.PAYMENTS);
             const settings = DB.getObject(DB_KEYS.SETTINGS);
 
-            const totalFeesCollected = payments.reduce((sum, p) => sum + Number(p.amount), 0);
+            const totalFees = payments.reduce((sum, p) => sum + Number(p.amount), 0);
+            const currency = settings.currency || '$';
 
             container.innerHTML = `
                 <div class="page-header">
                     <h2 class="page-title">Dashboard Overview</h2>
-                    <span style="font-size: 13px; color: var(--text-muted);">Term: ${settings.currentTerm || 'Term 1'} | Year: ${settings.academicYear || '2026'}</span>
+                    <span style="font-size: 13px; color: var(--text-muted);">${settings.schoolName || 'EduPulse Academy'} | ${settings.academicYear || '2026'}</span>
                 </div>
 
                 <div class="stats-grid">
@@ -1017,91 +1095,70 @@
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon" style="background:#f3e8ff; color:#9333ea;"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                        <div class="stat-info"><h3>${settings.currency || '$'}${totalFeesCollected}</h3><p>Fees Collected</p></div>
+                        <div class="stat-info"><h3>${currency}${totalFees}</h3><p>Fees Collected</p></div>
                     </div>
                 </div>
 
                 <div class="dashboard-charts">
                     <div class="card">
-                        <div class="card-header"><span class="card-title">Enrollment Overview</span></div>
-                        <canvas id="enrollmentChart"></canvas>
+                        <div class="card-header"><span class="card-title">Class Distribution</span></div>
+                        <div class="bar-chart-container">
+                            ${classes.map(c => {
+                                const count = students.filter(s => s.class === c.name).length;
+                                const heightPercent = Math.min(100, (count / 10) * 100) || 15;
+                                return `
+                                    <div class="bar-group">
+                                        <div class="bar-fill" style="height: ${heightPercent}%;"></div>
+                                        <span class="bar-label">${c.name} (${count})</span>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
                     </div>
+
                     <div class="card">
-                        <div class="card-header"><span class="card-title">Fee Collections</span></div>
-                        <canvas id="financeChart"></canvas>
+                        <div class="card-header"><span class="card-title">Quick Actions</span></div>
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <button class="btn btn-secondary" onclick="navigate('students')">+ Add Student</button>
+                            <button class="btn btn-secondary" onclick="navigate('attendance')">Mark Attendance</button>
+                            <button class="btn btn-secondary" onclick="navigate('fees')">Collect Fees</button>
+                            <button class="btn btn-secondary" onclick="navigate('exams')">Enter Marks</button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><span class="card-title">Recent Student Registrations</span></div>
+                    <div class="card-header"><span class="card-title">Recent Fee Receipts</span></div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <tr><th>Adm No</th><th>Name</th><th>Class</th><th>Gender</th><th>Status</th></tr>
+                                <tr><th>Receipt No</th><th>Student</th><th>Class</th><th>Amount</th><th>Method</th><th>Date</th></tr>
                             </thead>
                             <tbody>
-                                ${students.slice(-5).reverse().map(s => `
+                                ${payments.slice(-5).reverse().map(p => `
                                     <tr>
-                                        <td>${s.admNo}</td>
-                                        <td>${s.name}</td>
-                                        <td>${s.class}</td>
-                                        <td>${s.gender}</td>
-                                        <td><span class="status-pill status-${s.status}">${s.status}</span></td>
+                                        <td><b>${p.receiptNo}</b></td>
+                                        <td>${p.studentName}</td>
+                                        <td>${p.class}</td>
+                                        <td>${currency}${p.amount}</td>
+                                        <td>${p.method}</td>
+                                        <td>${p.date}</td>
                                     </tr>
-                                `).join('') || '<tr><td colspan="5">No records found</td></tr>'}
+                                `).join('') || '<tr><td colspan="6">No payments recorded.</td></tr>'}
                             </tbody>
                         </table>
                     </div>
                 </div>
             `;
-
-            drawCharts();
         }
 
-        /* CUSTOM CANVAS CHARTS */
-        function drawCharts() {
-            // Simple Pure Canvas Bar Chart for Enrollment
-            const c1 = document.getElementById('enrollmentChart');
-            if (c1) {
-                const ctx = c1.getContext('2d');
-                c1.width = c1.parentElement.clientWidth - 40;
-                c1.height = 200;
-                ctx.fillStyle = '#2563eb';
-                ctx.fillRect(40, 40, 40, 120);
-                ctx.fillRect(120, 70, 40, 90);
-                ctx.fillRect(200, 20, 40, 140);
-                ctx.fillStyle = '#64748b';
-                ctx.font = '12px Inter';
-                ctx.fillText('Gr 9', 45, 180);
-                ctx.fillText('Gr 10', 125, 180);
-                ctx.fillText('Gr 11', 205, 180);
-            }
-
-            // Canvas Line Chart for Finance
-            const c2 = document.getElementById('financeChart');
-            if (c2) {
-                const ctx = c2.getContext('2d');
-                c2.width = c2.parentElement.clientWidth - 40;
-                c2.height = 200;
-                ctx.beginPath();
-                ctx.strokeStyle = '#10b981';
-                ctx.lineWidth = 3;
-                ctx.moveTo(30, 140);
-                ctx.lineTo(100, 90);
-                ctx.lineTo(170, 110);
-                ctx.lineTo(240, 40);
-                ctx.stroke();
-            }
-        }
-
-        /* VIEW 2: STUDENT MANAGEMENT */
         function renderStudents(container) {
             const students = DB.get(DB_KEYS.STUDENTS);
             const classes = DB.get(DB_KEYS.CLASSES);
 
             container.innerHTML = `
                 <div class="page-header">
-                    <h2 class="page-title">Student Directory</h2>
+                    <h2 class="page-title">Student Management</h2>
                     <div style="display:flex; gap:10px;">
                         <button class="btn btn-secondary btn-sm" onclick="exportCSV('students')">Export CSV</button>
                         <button class="btn btn-primary btn-sm" onclick="openStudentModal()">+ Add Student</button>
@@ -1111,7 +1168,7 @@
                 <div class="card" style="margin-bottom: 20px;">
                     <div class="form-row">
                         <div class="form-group" style="margin:0;">
-                            <input type="text" id="student-search" class="form-control" placeholder="Search name or ID..." onkeyup="filterStudents()">
+                            <input type="text" id="student-search" class="form-control" placeholder="Search by name or Adm No..." onkeyup="filterStudents()">
                         </div>
                         <div class="form-group" style="margin:0;">
                             <select id="student-class-filter" class="form-control" onchange="filterStudents()">
@@ -1124,7 +1181,7 @@
 
                 <div class="card">
                     <div class="table-responsive">
-                        <table class="table" id="student-table">
+                        <table class="table">
                             <thead>
                                 <tr><th>Adm No</th><th>Name</th><th>Class</th><th>Gender</th><th>Parent Phone</th><th>Status</th><th>Actions</th></tr>
                             </thead>
@@ -1138,7 +1195,7 @@
         }
 
         function renderStudentRows(students) {
-            if (!students.length) return '<tr><td colspan="7">No students registered yet.</td></tr>';
+            if (!students.length) return '<tr><td colspan="7">No student records found.</td></tr>';
             return students.map(s => `
                 <tr>
                     <td><b>${s.admNo}</b></td>
@@ -1161,60 +1218,47 @@
             let students = DB.get(DB_KEYS.STUDENTS);
 
             students = students.filter(s => {
-                const matchesQuery = s.name.toLowerCase().includes(query) || s.admNo.toLowerCase().includes(query);
-                const matchesClass = cls === '' || s.class === cls;
-                return matchesQuery && matchesClass;
+                const matchQuery = s.name.toLowerCase().includes(query) || s.admNo.toLowerCase().includes(query);
+                const matchClass = cls === '' || s.class === cls;
+                return matchQuery && matchClass;
             });
 
             document.getElementById('student-table-body').innerHTML = renderStudentRows(students);
         }
 
-        function openStudentModal(studentId = null) {
+        function openStudentModal(id = null) {
             const classes = DB.get(DB_KEYS.CLASSES);
-            let s = { admNo: 'ADM' + Math.floor(1000 + Math.random() * 9000), name: '', gender: 'Male', dob: '', class: classes[0]?.name || '', parent: '', phone: '', email: '', status: 'active' };
-            
-            if (studentId) {
-                s = DB.get(DB_KEYS.STUDENTS).find(x => x.id === studentId);
+            let s = { admNo: 'ADM' + Math.floor(1000 + Math.random() * 9000), name: '', gender: 'Male', dob: '', class: classes[0]?.name || '', parent: '', phone: '', status: 'active' };
+            if (id) {
+                s = DB.get(DB_KEYS.STUDENTS).find(x => x.id === id);
             }
 
-            openModal(studentId ? 'Edit Student' : 'Add New Student', `
-                <form id="student-form" onsubmit="saveStudent(event, '${studentId || ''}')">
+            openModal(id ? 'Edit Student' : 'Add New Student', `
+                <form onsubmit="saveStudent(event, '${id || ''}')">
                     <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Admission No</label>
-                            <input type="text" class="form-control" id="m-admNo" value="${s.admNo}" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="m-name" value="${s.name}" required>
-                        </div>
+                        <div class="form-group"><label class="form-label">Admission No</label><input class="form-control" id="st-adm" value="${s.admNo}" required></div>
+                        <div class="form-group"><label class="form-label">Full Name</label><input class="form-control" id="st-name" value="${s.name}" required></div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Gender</label>
-                            <select class="form-control" id="m-gender">
+                            <select class="form-control" id="st-gender">
                                 <option value="Male" ${s.gender==='Male'?'selected':''}>Male</option>
                                 <option value="Female" ${s.gender==='Female'?'selected':''}>Female</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Class</label>
-                            <select class="form-control" id="m-class">
+                            <select class="form-control" id="st-class">
                                 ${classes.map(c => `<option value="${c.name}" ${s.class===c.name?'selected':''}>${c.name}</option>`).join('')}
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Parent/Guardian Name</label>
-                            <input type="text" class="form-control" id="m-parent" value="${s.parent}">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Parent Phone</label>
-                            <input type="text" class="form-control" id="m-phone" value="${s.phone}">
-                        </div>
+                        <div class="form-group"><label class="form-label">Parent / Guardian Name</label><input class="form-control" id="st-parent" value="${s.parent}"></div>
+                        <div class="form-group"><label class="form-label">Parent Phone</label><input class="form-control" id="st-phone" value="${s.phone}"></div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Save Student</button>
+                    <button class="btn btn-primary btn-block">Save Student</button>
                 </form>
             `);
         }
@@ -1222,46 +1266,46 @@
         function saveStudent(e, id) {
             e.preventDefault();
             let students = DB.get(DB_KEYS.STUDENTS);
-            const studentData = {
+            const data = {
                 id: id || DB.generateId(),
-                admNo: document.getElementById('m-admNo').value,
-                name: document.getElementById('m-name').value,
-                gender: document.getElementById('m-gender').value,
-                class: document.getElementById('m-class').value,
-                parent: document.getElementById('m-parent').value,
-                phone: document.getElementById('m-phone').value,
+                admNo: document.getElementById('st-adm').value,
+                name: document.getElementById('st-name').value,
+                gender: document.getElementById('st-gender').value,
+                class: document.getElementById('st-class').value,
+                parent: document.getElementById('st-parent').value,
+                phone: document.getElementById('st-phone').value,
                 status: 'active'
             };
 
-            if (id) {
-                students = students.map(x => x.id === id ? studentData : x);
-            } else {
-                students.push(studentData);
-                addNotification(`New Student registered: ${studentData.name}`);
+            if (id) students = students.map(x => x.id === id ? data : x);
+            else {
+                students.push(data);
+                addNotification(`New Student Enrolled: ${data.name}`);
             }
 
             DB.set(DB_KEYS.STUDENTS, students);
             closeModal();
-            showToast("Student profile saved successfully.");
+            showToast("Student profile saved.");
             navigate('students');
         }
 
+        function editStudent(id) {
+            openStudentModal(id);
+        }
+
         function deleteStudent(id) {
-            if (confirm("Are you sure you want to delete this student record?")) {
-                let students = DB.get(DB_KEYS.STUDENTS);
-                students = students.filter(s => s.id !== id);
-                DB.set(DB_KEYS.STUDENTS, students);
+            if (confirm("Delete this student record?")) {
+                DB.set(DB_KEYS.STUDENTS, DB.get(DB_KEYS.STUDENTS).filter(s => s.id !== id));
                 showToast("Student deleted.");
                 navigate('students');
             }
         }
 
-        /* VIEW 3: TEACHERS */
         function renderTeachers(container) {
             const teachers = DB.get(DB_KEYS.TEACHERS);
             container.innerHTML = `
                 <div class="page-header">
-                    <h2 class="page-title">Teachers List</h2>
+                    <h2 class="page-title">Teachers Directory</h2>
                     <button class="btn btn-primary btn-sm" onclick="openTeacherModal()">+ Add Teacher</button>
                 </div>
                 <div class="card">
@@ -1278,7 +1322,7 @@
                                         <td>$${t.salary}</td>
                                         <td><button class="btn btn-danger btn-sm" onclick="deleteTeacher('${t.id}')">Delete</button></td>
                                     </tr>
-                                `).join('') || '<tr><td colspan="6">No teachers found.</td></tr>'}
+                                `).join('') || '<tr><td colspan="6">No teachers recorded.</td></tr>'}
                             </tbody>
                         </table>
                     </div>
@@ -1315,24 +1359,23 @@
         }
 
         function deleteTeacher(id) {
-            if (confirm("Delete this teacher record?")) {
+            if (confirm("Delete this teacher?")) {
                 DB.set(DB_KEYS.TEACHERS, DB.get(DB_KEYS.TEACHERS).filter(x => x.id !== id));
                 navigate('teachers');
             }
         }
 
-        /* VIEW 4: CLASSES */
         function renderClasses(container) {
             const classes = DB.get(DB_KEYS.CLASSES);
             container.innerHTML = `
                 <div class="page-header">
-                    <h2 class="page-title">Class Management</h2>
+                    <h2 class="page-title">Classes Management</h2>
                     <button class="btn btn-primary btn-sm" onclick="openClassModal()">+ Add Class</button>
                 </div>
                 <div class="card">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead><tr><th>Class Name</th><th>Section</th><th>Class Teacher</th><th>Term Fee</th><th>Capacity</th></tr></thead>
+                            <thead><tr><th>Class Name</th><th>Section</th><th>Class Teacher</th><th>Term Fee</th><th>Actions</th></tr></thead>
                             <tbody>
                                 ${classes.map(c => `
                                     <tr>
@@ -1340,7 +1383,7 @@
                                         <td>${c.section}</td>
                                         <td>${c.teacher}</td>
                                         <td>$${c.fee}</td>
-                                        <td>${c.capacity} Students</td>
+                                        <td><button class="btn btn-danger btn-sm" onclick="deleteClass('${c.id}')">Delete</button></td>
                                     </tr>
                                 `).join('')}
                             </tbody>
@@ -1377,7 +1420,13 @@
             navigate('classes');
         }
 
-        /* VIEW 5: SUBJECTS */
+        function deleteClass(id) {
+            if (confirm("Delete this class?")) {
+                DB.set(DB_KEYS.CLASSES, DB.get(DB_KEYS.CLASSES).filter(c => c.id !== id));
+                navigate('classes');
+            }
+        }
+
         function renderSubjects(container) {
             const subjects = DB.get(DB_KEYS.SUBJECTS);
             container.innerHTML = `
@@ -1391,13 +1440,12 @@
             `;
         }
 
-        /* VIEW 6: ATTENDANCE */
         function renderAttendance(container) {
             const classes = DB.get(DB_KEYS.CLASSES);
             const students = DB.get(DB_KEYS.STUDENTS);
 
             container.innerHTML = `
-                <div class="page-header"><h2 class="page-title">Daily Attendance</h2></div>
+                <div class="page-header"><h2 class="page-title">Student Attendance</h2></div>
                 <div class="card" style="margin-bottom:20px;">
                     <div class="form-row">
                         <div class="form-group" style="margin:0;">
@@ -1407,23 +1455,25 @@
                             </select>
                         </div>
                         <div class="form-group" style="margin:0;">
-                            <label class="form-label">Select Date</label>
+                            <label class="form-label">Date</label>
                             <input type="date" id="att-date" class="form-control" value="${new Date().toISOString().split('T')[0]}">
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <table class="table">
-                        <thead><tr><th>Student</th><th>Status</th></tr></thead>
+                        <thead><tr><th>Student Name</th><th>Adm No</th><th>Attendance Status</th></tr></thead>
                         <tbody>
                             ${students.map(s => `
                                 <tr>
-                                    <td>${s.name} (${s.admNo})</td>
+                                    <td>${s.name}</td>
+                                    <td><b>${s.admNo}</b></td>
                                     <td>
-                                        <select class="form-control" style="width:120px;">
+                                        <select class="form-control" style="width:140px;">
                                             <option value="present">Present</option>
                                             <option value="absent">Absent</option>
                                             <option value="late">Late</option>
+                                            <option value="excused">Excused</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -1435,24 +1485,92 @@
             `;
         }
 
-        /* VIEW 7: EXAMINATIONS & MARKS */
         function renderExams(container) {
+            const exams = DB.get(DB_KEYS.EXAMS);
             container.innerHTML = `
-                <div class="page-header"><h2 class="page-title">Examinations & Marks</h2></div>
+                <div class="page-header">
+                    <h2 class="page-title">Exams & Examinations</h2>
+                    <button class="btn btn-primary btn-sm" onclick="openExamModal()">+ Add Exam</button>
+                </div>
                 <div class="card">
-                    <p style="color: var(--text-muted); font-size: 14px;">Select an exam session to record or print report cards.</p>
-                    <table class="table" style="margin-top: 15px;">
-                        <thead><tr><th>Exam Name</th><th>Term</th><th>Class</th><th>Actions</th></tr></thead>
+                    <table class="table">
+                        <thead><tr><th>Exam Name</th><th>Class</th><th>Subject</th><th>Term</th><th>Actions</th></tr></thead>
                         <tbody>
-                            <tr><td>Mid-Term Examination</td><td>Term 1</td><td>Grade 10</td><td><button class="btn btn-primary btn-sm" onclick="window.print()">Print Report Cards</button></td></tr>
-                            <tr><td>Final Examination</td><td>Term 1</td><td>Grade 11</td><td><button class="btn btn-primary btn-sm" onclick="window.print()">Print Report Cards</button></td></tr>
+                            ${exams.map(e => `
+                                <tr>
+                                    <td><b>${e.name}</b></td>
+                                    <td>${e.class}</td>
+                                    <td>${e.subject}</td>
+                                    <td>${e.term}</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="printReportCard('${e.id}')">Report Cards</button></td>
+                                </tr>
+                            `).join('')}
                         </tbody>
                     </table>
                 </div>
             `;
         }
 
-        /* VIEW 8: FEES & PAYMENTS */
+        function openExamModal() {
+            const classes = DB.get(DB_KEYS.CLASSES);
+            const subjects = DB.get(DB_KEYS.SUBJECTS);
+            openModal('Create Exam', `
+                <form onsubmit="saveExam(event)">
+                    <div class="form-group"><label class="form-label">Exam Title</label><input id="ex-title" class="form-control" required></div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Class</label>
+                            <select id="ex-class" class="form-control">${classes.map(c => `<option value="${c.name}">${c.name}</option>`).join('')}</select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subject</label>
+                            <select id="ex-sub" class="form-control">${subjects.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}</select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block">Create Exam</button>
+                </form>
+            `);
+        }
+
+        function saveExam(e) {
+            e.preventDefault();
+            const exams = DB.get(DB_KEYS.EXAMS);
+            exams.push({
+                id: DB.generateId(),
+                name: document.getElementById('ex-title').value,
+                class: document.getElementById('ex-class').value,
+                subject: document.getElementById('ex-sub').value,
+                term: 'Term 1'
+            });
+            DB.set(DB_KEYS.EXAMS, exams);
+            closeModal();
+            navigate('exams');
+        }
+
+        function printReportCard(examId) {
+            const students = DB.get(DB_KEYS.STUDENTS);
+            openModal('Report Card View', `
+                <div class="printable-card" style="padding:20px; text-align:center;">
+                    <h2>EduPulse Academy</h2>
+                    <p style="color:var(--text-muted); font-size:13px;">Official Academic Performance Report</p>
+                    <hr style="margin:15px 0;">
+                    <div style="text-align:left;">
+                        <p><strong>Student Name:</strong> ${students[0]?.name || 'John Doe'}</p>
+                        <p><strong>Admission No:</strong> ${students[0]?.admNo || 'ADM1001'}</p>
+                        <p><strong>Class:</strong> Grade 10</p>
+                    </div>
+                    <table class="table" style="margin-top:20px;">
+                        <thead><tr><th>Subject</th><th>Score</th><th>Grade</th></tr></thead>
+                        <tbody>
+                            <tr><td>Mathematics</td><td>85%</td><td>A</td></tr>
+                            <tr><td>Science</td><td>78%</td><td>B</td></tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-primary no-print" style="margin-top:20px;" onclick="window.print()">Print Report Card</button>
+                </div>
+            `);
+        }
+
         function renderFees(container) {
             const payments = DB.get(DB_KEYS.PAYMENTS);
             const settings = DB.getObject(DB_KEYS.SETTINGS);
@@ -1460,25 +1578,27 @@
             container.innerHTML = `
                 <div class="page-header">
                     <h2 class="page-title">Fee Collection</h2>
-                    <button class="btn btn-primary btn-sm" onclick="openPaymentModal()">+ Record Payment</button>
+                    <button class="btn btn-primary btn-sm" onclick="openPaymentModal()">+ Record Fee Payment</button>
                 </div>
                 <div class="card">
-                    <table class="table">
-                        <thead><tr><th>Receipt No</th><th>Student</th><th>Class</th><th>Amount Paid</th><th>Date</th><th>Method</th><th>Receipt</th></tr></thead>
-                        <tbody>
-                            ${payments.map(p => `
-                                <tr>
-                                    <td><b>${p.receiptNo}</b></td>
-                                    <td>${p.studentName}</td>
-                                    <td>${p.class}</td>
-                                    <td>${settings.currency || '$'}${p.amount}</td>
-                                    <td>${p.date}</td>
-                                    <td>${p.method}</td>
-                                    <td><button class="btn btn-secondary btn-sm" onclick="printReceipt('${p.id}')">Print</button></td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead><tr><th>Receipt No</th><th>Student</th><th>Class</th><th>Amount Paid</th><th>Date</th><th>Method</th><th>Receipt</th></tr></thead>
+                            <tbody>
+                                ${payments.map(p => `
+                                    <tr>
+                                        <td><b>${p.receiptNo}</b></td>
+                                        <td>${p.studentName}</td>
+                                        <td>${p.class}</td>
+                                        <td>${settings.currency || '$'}${p.amount}</td>
+                                        <td>${p.date}</td>
+                                        <td>${p.method}</td>
+                                        <td><button class="btn btn-secondary btn-sm" onclick="printReceipt('${p.id}')">Print</button></td>
+                                    </tr>
+                                `).join('') || '<tr><td colspan="7">No payment records found.</td></tr>'}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             `;
         }
@@ -1529,21 +1649,22 @@
             DB.set(DB_KEYS.PAYMENTS, payments);
             addNotification(`Fee Payment received from ${student.name}`);
             closeModal();
-            showToast("Payment recorded successfully.");
+            showToast("Payment saved successfully.");
             navigate('fees');
         }
 
         function printReceipt(id) {
             const p = DB.get(DB_KEYS.PAYMENTS).find(x => x.id === id);
-            openModal('Payment Receipt', `
-                <div class="printable-area" style="text-align:center; padding: 20px;">
-                    <h3>EduPulse Academy</h3>
-                    <p style="font-size:12px; color:var(--text-muted);">Official Fee Receipt</p>
+            const settings = DB.getObject(DB_KEYS.SETTINGS);
+            openModal('Fee Receipt', `
+                <div class="printable-card" style="text-align:center; padding: 20px;">
+                    <h3>${settings.schoolName || 'EduPulse Academy'}</h3>
+                    <p style="font-size:12px; color:var(--text-muted);">Official Fee Payment Receipt</p>
                     <hr style="margin: 15px 0;">
                     <p><strong>Receipt No:</strong> ${p.receiptNo}</p>
                     <p><strong>Student:</strong> ${p.studentName}</p>
                     <p><strong>Class:</strong> ${p.class}</p>
-                    <p><strong>Amount Paid:</strong> $${p.amount}</p>
+                    <p><strong>Amount Paid:</strong> ${settings.currency || '$'}${p.amount}</p>
                     <p><strong>Date:</strong> ${p.date}</p>
                     <p><strong>Method:</strong> ${p.method}</p>
                     <button class="btn btn-primary no-print" style="margin-top:20px;" onclick="window.print()">Print Receipt</button>
@@ -1551,7 +1672,6 @@
             `);
         }
 
-        /* VIEW 9: USER MANAGEMENT */
         function renderUsers(container) {
             const users = DB.get(DB_KEYS.USERS);
             container.innerHTML = `
@@ -1592,7 +1712,7 @@
                             <option value="student">Student</option>
                         </select>
                     </div>
-                    <button class="btn btn-primary btn-block">Create Account</button>
+                    <button class="btn btn-primary btn-block">Create User</button>
                 </form>
             `);
         }
@@ -1613,13 +1733,12 @@
             navigate('users');
         }
 
-        /* VIEW 10: REPORTS */
         function renderReports(container) {
             container.innerHTML = `
-                <div class="page-header"><h2 class="page-title">Reports & Analytics</h2></div>
+                <div class="page-header"><h2 class="page-title">Reports & Data Exports</h2></div>
                 <div class="card">
-                    <h3>Export Module Data</h3>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Download complete CSV files for system reporting.</p>
+                    <h3>System Exports</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Download complete CSV files for school administration.</p>
                     <div style="display:flex; gap:10px; flex-wrap:wrap;">
                         <button class="btn btn-secondary" onclick="exportCSV('students')">Export Students CSV</button>
                         <button class="btn btn-secondary" onclick="exportCSV('teachers')">Export Teachers CSV</button>
@@ -1629,14 +1748,13 @@
             `;
         }
 
-        /* VIEW 11: SETTINGS & BACKUP */
         function renderSettings(container) {
             const settings = DB.getObject(DB_KEYS.SETTINGS);
 
             container.innerHTML = `
                 <div class="page-header"><h2 class="page-title">Settings & Backup</h2></div>
                 <div class="card" style="margin-bottom: 20px;">
-                    <h3>School Configuration</h3>
+                    <h3>School Details</h3>
                     <form onsubmit="saveSettings(event)" style="margin-top:15px;">
                         <div class="form-row">
                             <div class="form-group"><label class="form-label">School Name</label><input id="set-name" class="form-control" value="${settings.schoolName || ''}"></div>
@@ -1647,8 +1765,8 @@
                 </div>
 
                 <div class="card">
-                    <h3>Backup & Restore</h3>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Export full system data as JSON backup or restore previously saved data.</p>
+                    <h3>Backup & Data Reset</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Export system records or re-initialize sample data.</p>
                     <div style="display:flex; gap: 10px;">
                         <button class="btn btn-success" onclick="exportBackupJSON()">Export JSON Backup</button>
                         <button class="btn btn-danger" onclick="clearData()">Reset Sample Data</button>
@@ -1667,10 +1785,9 @@
             showToast("Settings updated.");
         }
 
-        /* BACKUP, CSV & UTILITIES */
         function exportCSV(type) {
             let data = DB.get('sms_' + type);
-            if (!data.length) return showToast("No data available to export.");
+            if (!data.length) return showToast("No data to export.");
             
             const keys = Object.keys(data[0]);
             let csv = keys.join(',') + '\n';
@@ -1688,9 +1805,7 @@
 
         function exportBackupJSON() {
             const backup = {};
-            Object.values(DB_KEYS).forEach(k => {
-                backup[k] = localStorage.getItem(k);
-            });
+            Object.values(DB_KEYS).forEach(k => backup[k] = localStorage.getItem(k));
             const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -1700,23 +1815,22 @@
         }
 
         function clearData() {
-            if (confirm("Are you sure you want to reset all system data?")) {
+            if (confirm("Reset all data to default samples?")) {
                 localStorage.clear();
                 initSampleData();
-                showToast("System re-initialized with sample data.");
+                showToast("System reset with default data.");
                 location.reload();
             }
         }
 
-        /* NOTIFICATIONS SYSTEM */
         function addNotification(msg) {
             const notifs = DB.get(DB_KEYS.NOTIFS);
             notifs.unshift({ id: DB.generateId(), message: msg, date: new Date().toLocaleTimeString(), read: false });
             DB.set(DB_KEYS.NOTIFS, notifs);
-            updateNotifBadge();
+            updateNotifUI();
         }
 
-        function updateNotifBadge() {
+        function updateNotifUI() {
             const notifs = DB.get(DB_KEYS.NOTIFS);
             const unread = notifs.filter(n => !n.read).length;
             const badge = document.getElementById('notif-badge');
@@ -1726,21 +1840,43 @@
             } else {
                 badge.style.display = 'none';
             }
+
+            const list = document.getElementById('notif-list');
+            list.innerHTML = notifs.map(n => `
+                <li class="notif-item">
+                    <div>${n.message}</div>
+                    <small style="color:var(--text-muted);">${n.date}</small>
+                </li>
+            `).join('') || '<li class="notif-item">No notifications</li>';
         }
 
-        function toggleNotifications() {
+        function toggleNotifDropdown() {
+            const dd = document.getElementById('notif-dropdown');
+            dd.classList.toggle('active');
             const notifs = DB.get(DB_KEYS.NOTIFS);
-            openModal('Notifications', `
-                <ul style="list-style:none; max-height:300px; overflow-y:auto;">
-                    ${notifs.map(n => `<li style="padding:10px 0; border-bottom:1px solid var(--border);"><div>${n.message}</div><small style="color:var(--text-muted);">${n.date}</small></li>`).join('') || '<li>No notifications</li>'}
-                </ul>
-            `);
-            // Mark all read
             DB.set(DB_KEYS.NOTIFS, notifs.map(n => ({ ...n, read: true })));
-            updateNotifBadge();
+            updateNotifUI();
         }
 
-        /* MODAL UTILITIES */
+        function clearNotifications() {
+            DB.set(DB_KEYS.NOTIFS, []);
+            updateNotifUI();
+        }
+
+        function handleGlobalSearch(e) {
+            const val = e.target.value.toLowerCase().trim();
+            if (e.key === 'Enter' && val) {
+                navigate('students');
+                setTimeout(() => {
+                    const searchInput = document.getElementById('student-search');
+                    if (searchInput) {
+                        searchInput.value = val;
+                        filterStudents();
+                    }
+                }, 100);
+            }
+        }
+
         function openModal(title, contentHtml) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-body').innerHTML = contentHtml;
@@ -1765,7 +1901,6 @@
             input.type = input.type === 'password' ? 'text' : 'password';
         }
 
-        /* INITIALIZATION */
         window.onload = function() {
             initSampleData();
             const savedUser = DB.getObject(DB_KEYS.CURRENT_USER);
@@ -1775,7 +1910,6 @@
             }
         };
 
-        // Sidebar Collapse Toggle
         document.getElementById('sidebar-toggle').addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('collapsed');
         });
